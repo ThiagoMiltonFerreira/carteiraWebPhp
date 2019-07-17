@@ -1,8 +1,6 @@
 <?php
 class sqls extends PDO
 {
-
-
 	private $conn;
 	public function __construct()
 	{
@@ -38,7 +36,14 @@ class sqls extends PDO
 
 
 	}
+	public function Alterar ($querySql)
+	{
+		$stmt = $this->conn->prepare($querySql);
+		$results = $stmt->execute();
+		return $results;
+		
 
+	}
 
 
 }

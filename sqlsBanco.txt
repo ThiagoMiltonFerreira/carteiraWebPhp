@@ -1,3 +1,4 @@
+CREATE DATABASE bdcarteiraweb;
 CREATE TABLE `bdcarteiraweb`.`tb_usuarios` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
@@ -6,3 +7,7 @@ CREATE TABLE `bdcarteiraweb`.`tb_usuarios` (
   `perg_secreta` VARCHAR(45) NOT NULL,
   `resp_perg_secreta` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_usuario`));
+
+.......................................................................................................................
+
+INSERT INTO `bdcarteiraweb`.`tb_usuarios` (`nome`, `email`, `senha`, `perg_secreta`, `resp_perg_secreta`) VALUES ('thiago', 'thiagomilton.f@gmail.com', '30081996', 'Qual nome do seu cachorro?', 'toto');
