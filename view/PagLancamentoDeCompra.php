@@ -34,7 +34,6 @@
 					  
 				</select>		
         		<br><br>
-        		
         		Codigo:  <input type='text' name='txtLancVendasCodigo' placeholder="Codigo do produto." onKeyPress = "teclaSomenteNumero()">
 	        	1 - Produto:  <input type='text' name='txtLancVendasProduto'placeholder="Nome do produto." >
 	        	2 - Quantidade:  <input type='text' name='txtLancVendasQuantidade'placeholder="Quantidade de produto disponivel." onKeyPress = "teclaSomenteNumero()" >
@@ -56,7 +55,6 @@
 	      
 	        	
         	<br><br><button name='crudLancVenda' value ="1" id="btn-salvar">Salvar</button>
-        
         	<button name='crudLancVenda' value="2" id="btn-pesquisar">Pesquisar</button>
         	<button name='crudLancVenda' value="3" id="btn-alterar">Alterar</button>
         	<button name='crudLancVenda' value="4" id="btn-excluir">Excluir</button>

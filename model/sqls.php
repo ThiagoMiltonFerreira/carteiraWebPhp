@@ -21,6 +21,8 @@ class sqls extends PDO
 	}
 	public  function InsereNoBanco ($querySql)
 	{
+
+		//$e = "INSERT INTO bdcarteiraweb.tb_vendas (usuario,codigo, produto, quantidade, preco_unitario, total,descricao, tipo_pagamento, parcelas, dest_prod_vendido) VALUES ('thiago',1, 'Teste', 1, 10, 10, 'teste', 'Debito', 0, 'Admin')";
 		$stmt = $this->conn->prepare($querySql);
 		$results = $stmt->execute();
 		return $results;

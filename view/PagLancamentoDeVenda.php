@@ -8,7 +8,20 @@
   		
   	}
   	else
-  	{
+  	{ 	
+  		$dadosPesquisa=""; 
+  		 //Se nao existir a varivel pesquisa entao cria ela 	
+  		if(!isset($_SESSION["pesquisa"]))
+  		{
+  			$_SESSION["pesquisa"]="";
+  		}
+  		 //Se ja foi criada entao atribui o valor para a variavel dados pequisa,
+  		 //e destroi a sessao pesquisa
+  		else
+  		{
+  			$dadosPesquisa = $_SESSION["pesquisa"];
+  			unset ($_SESSION["pesquisa"]);
+  		}
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +32,7 @@
 <body>
  	
         	<br><h1 id="sublinhar">Lancamento de Vendas.</h1>
-        	<form action="ProcessaLancamentoDeVenda" method='get'>
+        	<form action="../controller/lancVendas.php" method='post'>
         	    <!-- 1 Salvar |   2 Pesquisar | 3 Alterar | 4 Excluir :  <input type='text' name='txtLancVendasOpc' placeholder="0"><br><br>-->
         		Qual campo deseja alterar  colocar? <!--  <input type='text' name='qualCampoAlterar' value="10" placeholder="0">-->
         		
@@ -33,7 +46,11 @@
 					  
 				</select>		
         		<br><br>
-        		
+        		teste:  <input type='text' name='' placeholder="Codigo do produto." onKeyPress = "teclaSomenteNumero()" 
+        		value="<?php echo $dadosPesquisa;  ?>"><br>
+
+
+
         		Codigo:  <input type='text' name='txtLancVendasCodigo' placeholder="Codigo do produto." required onKeyPress = "teclaSomenteNumero()">
 	        	1 - Produto:  <input type='text' name='txtLancVendasProduto'placeholder="Nome do produto.">
 	        	2 - Quantidade:  <input type='text' name='txtLancVendasQuantidade'placeholder="Quantidade de produto disponivel." onKeyPress = "teclaSomenteNumero()">
