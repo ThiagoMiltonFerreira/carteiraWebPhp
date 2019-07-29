@@ -9,7 +9,8 @@
   	}
   	else
   	{ 	
-  		$dadosPesquisa=""; 
+  	
+  		$dadosPesquisa="";
   		 //Se nao existir a varivel pesquisa entao cria ela 	
   		if(!isset($_SESSION["pesquisa"]))
   		{
@@ -20,9 +21,23 @@
   		else
   		{
   			$dadosPesquisa = $_SESSION["pesquisa"];
-  			unset ($_SESSION["pesquisa"]);
+  			$dadosCampos = array();
+
+  			
+  			foreach ($dadosPesquisa as $key => $value) 
+  			{
+  				foreach ($value as $key => $value) 
+  				{
+  					
+  					array_push($dadosCampos,$value);
+
+  				}
+  				
+  			}
+  			//var_dump($dadosCampos);
   		}
 
+  		  
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,45 +45,152 @@
 	<?php include "cabecalho.html" ?>
 </head>
 <body>
- 	
+ 		
         	<br><h1 id="sublinhar">Lancamento de Vendas.</h1>
         	<form action="../controller/lancVendas.php" method='post'>
-        	    <!-- 1 Salvar |   2 Pesquisar | 3 Alterar | 4 Excluir :  <input type='text' name='txtLancVendasOpc' placeholder="0"><br><br>-->
-        		Qual campo deseja alterar  colocar? <!--  <input type='text' name='qualCampoAlterar' value="10" placeholder="0">-->
-        		
-        		<select name='qualCampoAlterar'>
-					  <option value='10'>Nao Alterar</option>
-					  <option value='1'>1</option>
-					  <option value='2'>2</option>
-					  <option value='3'>3</option>
-					  <option value='4'>4</option>
-					  <option value='5'>5</option>
-					  
-				</select>		
+	
         		<br><br>
-        		teste:  <input type='text' name='' placeholder="Codigo do produto." onKeyPress = "teclaSomenteNumero()" 
-        		value="<?php echo $dadosPesquisa;  ?>"><br>
+        		Codigo:  <input type='text' name='txtLancVendasCodigo' placeholder="Codigo do produto." required onKeyPress = "teclaSomenteNumero()" value="<?php
+        		if(isset($dadosCampos[2]))
+        		{
+        			echo $dadosCampos[2];
+        		}
+        		else
+        		{
+        			echo "";
+        		}
+             	?>">
+
+	        	1 - Produto:  <input type='text' name='txtLancVendasProduto'placeholder="Nome do produto." value="<?php
+	        	if(isset($dadosCampos[3]))
+        		{
+        			echo $dadosCampos[3];
+        		}
+        		else
+        		{
+        			echo "";
+        		}
+             	?>">
 
 
-
-        		Codigo:  <input type='text' name='txtLancVendasCodigo' placeholder="Codigo do produto." required onKeyPress = "teclaSomenteNumero()">
-	        	1 - Produto:  <input type='text' name='txtLancVendasProduto'placeholder="Nome do produto.">
-	        	2 - Quantidade:  <input type='text' name='txtLancVendasQuantidade'placeholder="Quantidade de produto disponivel." onKeyPress = "teclaSomenteNumero()">
-	        	3 - Preco Unitario:  <input type='text' name='txtLancVendasPrecoUnitario'placeholder="Preço unitario." onKeyPress = "teclaSomenteNumero()" >    	
-	        	4 - Total:  <input type='text' name='txtLancVendasTotal'value="0" onKeyPress = "teclaSomenteNumero()">
+	        	2 - Quantidade:  <input type='text' name='txtLancVendasQuantidade'placeholder="Quantidade de produto disponivel." onKeyPress = "teclaSomenteNumero()" value="<?php
+	        	if(isset($dadosCampos[4]))
+        		{
+        			echo $dadosCampos[4];
+        		}
+        		else
+        		{
+        			echo "";
+        		}
+             	?>">
+	        	3 - Preco Unitario:  <input type='text' name='txtLancVendasPrecoUnitario'placeholder="Preço unitario." onKeyPress = "teclaSomenteNumero()" value="<?php
+	        	if(isset($dadosCampos[5]))
+        		{
+        			echo $dadosCampos[5];
+        		}
+        		else
+        		{
+        			echo "";
+        		}
+             	?>">    	
+	        	4 - Total:  <input type='text' name='txtLancVendasTotal' onKeyPress = "teclaSomenteNumero()" value="<?php
+	        	if(isset($dadosCampos[6]))
+        		{
+        			echo $dadosCampos[6];
+        		}
+        		else
+        		{
+        			echo "";
+        		}
+             	?>">
 
 	        	
-	        	<br><br><br>5 - Descricao:<br>  <textarea name='txtAreaDescricao'placeholder="Descriçao do produto ate 255 caracteres." ></textarea><br>
+	        	<br><br><br>5 - Descricao:<br>  <textarea name='txtAreaDescricao'>
+	        	<?php 
+		        	if(isset($dadosCampos[7]))
+	        		{
+	        			echo $dadosCampos[7];
+	        		}
+	        		else
+	        		{
+	        			echo "";
+	        		}   
+	        		?>
+        			
+        		</textarea><br>
 	        	<br>
 	        	<div id="divPagto">
-	        	<h1 id="sublinhar"> Pagamento:</h1>
-	        	<input type='radio' name='radioPagamento' value='Dinheiro' checked="checked">Dinheiro <br>
-	        	<input type='radio' name='radioPagamento' value='Debito'>Debito <br>
-	        	<input type='radio' name='radioPagamento' value='Transferencia'>Transferencia<br>
-	        	<input type='radio' name='radioPagamento' value='Credito'>Credito
-	        	- Parcelas <input type='text' name='txtParcelas'value="0" required onKeyPress = "teclaSomenteNumero()">
-	        	<br><br>
-	        	Origem do Produto vendido <input type='text' name='txtDestProdutoComprado'placeholder="Qual setor ultilizava o produto?" ><br>
+  	
+		        	<h1 id="sublinhar"> Pagamento:</h1>
+		        	<input type='radio' name='radioPagamento' required value='Dinheiro'
+		        	<?php
+		        		if(isset($dadosCampos[8])&&$dadosCampos[8]==="Dinheiro")
+		        		{
+		        			echo'checked="checked"';
+		        		}
+
+		        	?>
+		        	>Dinheiro
+
+
+		        	<br>
+
+
+		        	<input type='radio' name='radioPagamento' required value='Debito'
+		        	<?php
+		        		if(isset($dadosCampos[8])&&$dadosCampos[8]==="Debito")
+		        		{
+		        			echo'checked="checked"';
+		        		}
+
+		        	?>
+		        	>Debito 
+		        	<br>
+
+
+		        	<input type='radio' name='radioPagamento' required value='Transferencia'
+		        	<?php
+		        		if(isset($dadosCampos[8])&&$dadosCampos[8]==="Transferencia")
+		        		{
+		        			echo'checked="checked"';
+		        		}
+
+		        	?>
+		        	>Transferencia
+		        	<br>
+
+		        	<input type='radio' name='radioPagamento' required value='Credito'
+		        	<?php
+		        		if(isset($dadosCampos[8])&&$dadosCampos[8]==="Credito")
+		        		{
+		        			echo'checked="checked"';
+		        		}
+
+		        	?>
+		        	>
+		        	Credito- Parcelas <input type='text' name='txtParcelas' placeholder="Parcelas." required onKeyPress = "teclaSomenteNumero()" required value="<?php
+		        	if(isset($dadosCampos[9]))
+	        		{
+	        			echo $dadosCampos[9];
+	        		}
+	        		else
+	        		{
+	        			echo "";
+	        		}
+	             	?>">
+		        	<br>
+		        	<br>
+		        	Origem do Produto vendido <input type='text' name='txtDestProdutoComprado'placeholder="Qual setor ultilizava o produto?" value="<?php
+		        	if(isset($dadosCampos[10]))
+	        		{
+	        			echo $dadosCampos[10];
+	        		}
+	        		else
+	        		{
+	        			echo "";
+	        		}
+	             	?>">
+	             	<br>
 	        	</div>
 	        	
 	      

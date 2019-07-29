@@ -50,8 +50,8 @@ $host = $_SERVER['REQUEST_METHOD'];
 			}
 			else
 			{
-				//echo "Erro Ao Inserir no banco. Tabela vendas";
-				header("Location: ../view/PagDeErro.html");
+				echo"Erro em Inserir (SQL) :: Tabela vendas <br> lancVendas - linha 53 !";
+				//header("Location: ../view/PagDeErro.html");
 			}
 		}	
 		if($_POST['crudLancVenda'] === "2")
@@ -59,12 +59,61 @@ $host = $_SERVER['REQUEST_METHOD'];
       	
         	$codigo = $getSet->GetLancVendasCodigo();
         	$return = $query->BuscaNoBanco("SELECT * FROM bdcarteiraweb.tb_vendas WHERE codigo = $codigo");
-        	$_SESSION["pesquisa"] ="ferreira";
-        	//$_SESSION["pesquisa"] = $return;
+        	//$_SESSION["pesquisa"] ="ferreira";
+        	
         	//var_dump($_SESSION["pesquisa"]);
-			header("Location: ../view/PagLancamentoDeVenda.php");
+        	if($return==true)
+			{
+				$_SESSION["pesquisa"] = $return;
+				header("Location: ../view/PagLancamentoDeVenda.php");
+			}
+			else
+			{
+			   echo"Erro em Pesquisar (SQL) :: Tabela vendas <br> lancVendas - linha 72!";
+				//header("Location: ../view/PagDeErro.html");
+			}
+			
+		}
+		if($_POST['crudLancVenda'] === "3")
+		{
+      	
+        	$codigo 	= $getSet->GetLancVendasCodigo();
+        	$produto	= $getSet->GetLancVendasProduto();
+			$quantidade = $getSet->GetLancVendasQuantidade();	
+			$precoUnitario = $getSet->GetLancVendasPrecoUnitario();
+			$total         = $getSet->GetLancVendasTotal();
+			$areaDescricao = $getSet->GetLancVendasAreaDescricao();
+		    $radioPagamento= $getSet->GetLancVendasRadioPagamento();
+			$parcelas 	   = $getSet->GetLancVendasParcelas();
+		    $ProdutoVendido= $getSet->GetLancVendasDestProdutoComprado();
 
-		}	
+        	$return = $query->Alterar("UPDATE `bdcarteiraweb`.`tb_vendas` SET `produto` = '$produto', `quantidade` = '$quantidade', `preco_unitario` = '$precoUnitario', `total` = '$total', `descricao` = '$areaDescricao', `tipo_pagamento` = '$radioPagamento', `parcelas` = '$parcelas', `dest_prod_vendido` = '$ProdutoVendido' WHERE (`codigo` = '$codigo')");
+        	//var_dump($return);
+        	if($return===true)
+        	{
+				header("Location: ../view/PagLancamentoDeVenda.php");
+			}
+			else
+			{
+				echo"Erro em alterar (SQL) :: Tabela vendas <br> lancVendas - linha 89 !";
+			}
+		}
+		if($_POST['crudLancVenda'] === "4")
+		{
+      	
+        	$codigo 	= $getSet->GetLancVendasCodigo();
+        	$return = $query->Excluir("DELETE FROM `bdcarteiraweb`.`tb_vendas` WHERE (`codigo` = '$codigo')");
+        	//var_dump($return);
+        	if($return===true)
+        	{
+				header("Location: ../view/PagLancamentoDeVenda.php");
+			}
+			else
+			{
+				echo"Erro em alterar (SQL) :: Tabela vendas <br> lancVendas - linha 89 !";
+			}
+		}		
+
 /*
 
         echo $getSet->GetLancVendasCodigo()."<br>";
