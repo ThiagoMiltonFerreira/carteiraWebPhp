@@ -1,0 +1,9 @@
+.CentralizarCorpo{
+
+ width:500px;
+ margin-left:350px;
+ text-align:justify;
+ border-width: 2px 4px 3px 4px;
+ padding:3px;
+ position:relative;
+}

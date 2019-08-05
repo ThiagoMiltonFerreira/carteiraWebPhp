@@ -2,28 +2,36 @@
 <html>
 <head>
 <title>Carteira WEB</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
-<div  >
-		<h1 >Recuperar Senha </h1>
-		<form action="../controller/recuperarSenha.php" method="get">
- 		 	Pergunta de seguranca <br>
- 		 	<select name="perguntaSeguranca">
-			  <option value= "Qual nome do seu cachorro?">Qual nome do seu cachorro?</option>
-			  <option value= "Qual Nome de sua professora de infancia?">Qual Nome de sua professora de infancia?</option>
-			  <!--
-			  <option value="saab">Saab</option>
-			  <option value="mercedes">Mercedes</option>
-			  <option value="audi">Audi</option>
-				-->
-			</select><br><br>
-			Resposta: <input type="text" name="respostaSeguranca"><br><br>
-  			Email: <input type="Email" name="email"><br><br>
 
-  			<br>
-  			<input type="submit" value="Enviar Senha" >
-		</form>
+	<div class="container">
+		<div class="box">
+			<h4 align="center">Carteira Web </h4>
+			<h4>Recuperar Senha </h4>
+			
+			<form action="../controller/recuperarSenha.php" method="get"class="form-group">
+			 
+	 		 	Pergunta de seguranca:
+	 		 	<select name="perguntaSeguranca">
+				  <option value= "Qual nome do seu cachorro?">Qual nome do seu cachorro?</option>
+				  <option value= "Qual Nome de sua professora de infancia?">Qual Nome de sua professora de infancia?</option>
+				  <!--
+				  <option value="saab">Saab</option>
+				  <option value="mercedes">Mercedes</option>
+				  <option value="audi">Audi</option>
+					-->
+				</select><br><br>
+				Resposta: <input type="text" name="respostaSeguranca"><br><br>
+	  			Email: <input type="Email" name="email"><br><br>
+
+	  			<br>
+	  			<input type="submit" value="Enviar Senha" class="btn btn-primary" >
+	  		   
+			</form>
+		</div>
 	</div>
 
 

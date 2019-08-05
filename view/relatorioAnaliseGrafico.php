@@ -15,11 +15,13 @@
 <html>
 <head>
 	<?php include "cabecalho.html" ?>
+	<link rel="stylesheet" type="text/css" href="CSS/relatorioAnaliseGrafico.css">
 </head>
 <body>
 
-	<br><h1 id="sublinhar">Relatorio Geral.</h1>
-	<form action="ProcessaRelatorio1" method='get'>
+	<br><h1 id="sublinhar" align="center">Relatorio Geral.</h1>
+	<div class="CentralizarCorpo">
+		<form action="ProcessaRelatorio1" method='get'>
 	  
 	        		
 	        		<!-- Data Inicial:  <input type='date' name='txtRetirarValorSaldo' placeholder="Saldo Atual." required> -->
@@ -34,7 +36,7 @@
 						<h1 id="fonteIndex">Compras.</h1>
 						<iframe src="retRelatorioCompra" width="500px" id="iframeRelatorio"></iframe>
 
-	</form>
+		</form>
 </body>
 </html>
 </html>

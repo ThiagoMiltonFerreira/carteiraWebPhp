@@ -8,64 +8,220 @@
   		
   	}
   	else
-  	{
+  	{ 	
+  	
+  		$dadosPesquisa="";
+  		 //Se nao existir a varivel pesquisa entao cria ela 	
+  		if(!isset($_SESSION["pesquisa"]))
+  		{
+  			$_SESSION["pesquisa"]="";
+  		}
+  		 //Se ja foi criada entao atribui o valor para a variavel dados pequisa,
+  		 //e destroi a sessao pesquisa
+  		else
+  		{
+  			$dadosPesquisa = $_SESSION["pesquisa"];
+  			$dadosCampos = array();
 
+  			
+  			foreach ($dadosPesquisa as $key => $value) 
+  			{
+  				foreach ($value as $key => $value) 
+  				{
+  					
+  					array_push($dadosCampos,$value);
+
+  				}
+  				
+  			}
+  			//var_dump($dadosCampos);
+  		}
+
+  		  
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php include "cabecalho.html" ?>
+	<link rel="stylesheet" type="text/css" href="CSS/lancVenda.css">
 </head>
 <body>
- 	
-        	<br><h1 id="sublinhar">Lancamento de Vendas.</h1>
-        	<form action="ProcessaLancamentoDeVenda" method='get'>
-        	    <!-- 1 Salvar |   2 Pesquisar | 3 Alterar | 4 Excluir :  <input type='text' name='txtLancVendasOpc' placeholder="0"><br><br>-->
-        		Qual campo deseja alterar  colocar? <!--  <input type='text' name='qualCampoAlterar' value="10" placeholder="0">-->
-        		
-        		<select name='qualCampoAlterar'>
-					  <option value='10'>Nao Alterar</option>
-					  <option value='1'>1</option>
-					  <option value='2'>2</option>
-					  <option value='3'>3</option>
-					  <option value='4'>4</option>
-					  <option value='5'>5</option>
-					  
-				</select>		
-        		<br><br>
-        		
-        		Codigo:  <input type='text' name='txtLancVendasCodigo' placeholder="Codigo do produto." required onKeyPress = "teclaSomenteNumero()">
-	        	1 - Produto:  <input type='text' name='txtLancVendasProduto'placeholder="Nome do produto.">
-	        	2 - Quantidade:  <input type='text' name='txtLancVendasQuantidade'placeholder="Quantidade de produto disponivel." onKeyPress = "teclaSomenteNumero()">
-	        	3 - Preco Unitario:  <input type='text' name='txtLancVendasPrecoUnitario'placeholder="Preço unitario." onKeyPress = "teclaSomenteNumero()" >    	
-	        	4 - Total:  <input type='text' name='txtLancVendasTotal'value="0" onKeyPress = "teclaSomenteNumero()">
+  <h1 id="sublinhar" align="center">Lancamento de Vendas.</h1>
+  <div class="CentralizarCorpo">
+    
+    <form action="../controller/lancVendas.php" method='post'>
+	    <div class="form-group">
+	        <label for="exampleInputEmail1">Codigo:</label>
+	        <input type='text' name='txtLancVendasCodigo' placeholder="Codigo do produto." required onKeyPress = "teclaSomenteNumero()" value="<?php
+	        if(isset($dadosCampos[2]))
+	        {
+	        	echo $dadosCampos[2];
+	        }
+	        else
+	        {
+	        	echo "";
+	        }
+	        ?>">
+	    </div> 		
+	    <div class="form-group">
+	        <label for="exampleInputPassword1">Produto:</label>  
+	        	<input type='text' name='txtLancVendasProduto'placeholder="Nome do produto." value="<?php
+	        	if(isset($dadosCampos[3]))
+        		{
+        			echo $dadosCampos[3];
+        		}
+        		else
+        		{
+        			echo "";
+        		}
+             	?>"
+            >
+        </div>
+        <div class="form-group">	        
+	        <label for="exampleInputFile">Quantidade:</label>
+	        	<input type='text' name='txtLancVendasQuantidade'placeholder="Quantidade de produto disponivel." onKeyPress = "teclaSomenteNumero()" value="<?php
+	        	if(isset($dadosCampos[4]))
+        		{
+        			echo $dadosCampos[4];
+        		}
+        		else
+        		{
+        			echo "";
+        		}
+             	?>"
+            >
+        </div>
+        <div class="form-group">
+	        <label for="exampleInputFile">Preco Unitario:</label>
+	        <input type='text' name='txtLancVendasPrecoUnitario'placeholder="Preço unitario." onKeyPress = "teclaSomenteNumero()" value="<?php
+	        if(isset($dadosCampos[5]))
+        	{
+        		echo $dadosCampos[5];
+        	}
+        	else
+        	{
+        		echo "";
+        	}
+            ?>"
+           > 
+        </div>   	
+	    <div class="form-group">
+	        <label for="exampleInputFile">Total:</label>
+	        <input type='text' name='txtLancVendasTotal' onKeyPress = "teclaSomenteNumero()" value="<?php
+	        if(isset($dadosCampos[6]))
+        	{
+        		echo $dadosCampos[6];
+        	}
+        	else
+        	{
+        		echo "";
+        	}
+            ?>"
+           >
+       		<br>
+       		<br>	
+	        <label for="exampleInputFile">Descricao:</label>
+	        <br>
+	        <textarea name='txtAreaDescricao'>
+	        	<?php
+		        	if(isset($dadosCampos[7]))
+	        		{
+	        			echo $dadosCampos[7];
+	        		}
+	        		else
+	        		{
+	        			echo "";
+	        		}   
+	        		?>
+        			
+        	</textarea>
+        </div>
+        <div class="Corpo">
+        <div class="form-group">	
+		    <h1 id="sublinhar"> Pagamento:</h1>
+		    <input type='radio' name='radioPagamento' required value='Dinheiro'
+		        <?php
+		        if(isset($dadosCampos[8])&&$dadosCampos[8]==="Dinheiro")
+		        {
+		        	echo'checked="checked"';
+		       	}
+		        ?>
+		    >
+		    <label for="exampleInputFile"> Dinheiro </label>
+		    <br>
+		    <input type='radio' name='radioPagamento' required value='Debito'
+		        <?php
+		        if(isset($dadosCampos[8])&&$dadosCampos[8]==="Debito")
+		        {
+		        	echo'checked="checked"';
+		       	}
 
-	        	
-	        	<br><br><br>5 - Descricao:<br>  <textarea name='txtAreaDescricao'placeholder="Descriçao do produto ate 255 caracteres." ></textarea><br>
-	        	<br>
-	        	<div id="divPagto">
-	        	<h1 id="sublinhar"> Pagamento:</h1>
-	        	<input type='radio' name='radioPagamento' value='Dinheiro' checked="checked">Dinheiro <br>
-	        	<input type='radio' name='radioPagamento' value='Debito'>Debito <br>
-	        	<input type='radio' name='radioPagamento' value='Transferencia'>Transferencia<br>
-	        	<input type='radio' name='radioPagamento' value='Credito'>Credito
-	        	- Parcelas <input type='text' name='txtParcelas'value="0" required onKeyPress = "teclaSomenteNumero()">
-	        	<br><br>
-	        	Origem do Produto vendido <input type='text' name='txtDestProdutoComprado'placeholder="Qual setor ultilizava o produto?" ><br>
-	        	</div>
-	        	
-	      
-	        	
-        	<br>
-        	<br>
-        	<button name='crudLancVenda' value ="1" id="btn-salvar">Salvar</button>
-        	<button name='crudLancVenda' value="2" id="btn-pesquisar">Pesquisar</button>
-        	<button name='crudLancVenda' value="3" id="btn-alterar">Alterar</button>
-        	<button name='crudLancVenda' value="4" id="btn-excluir">Excluir</button>
-        
-        	</form>
-        	
+		        ?>
+		    >
+		    <label for="exampleInputFile"> Debito </label>
+		    <br>
+		    <input type='radio' name='radioPagamento' required value='Transferencia'
+		        <?php
+		        if(isset($dadosCampos[8])&&$dadosCampos[8]==="Transferencia")
+		        {
+		        	echo'checked="checked"';
+		        }
 
+		        ?>
+		    >
+		    <label for="exampleInputFile">Transferencia</label>
+		    <br>
+		    <input type='radio' name='radioPagamento' required value='Credito'
+		        <?php
+		        if(isset($dadosCampos[8])&&$dadosCampos[8]==="Credito")
+		        {
+		        	echo'checked="checked"';
+		        }
+
+		        ?>
+		    >
+		    <label for="exampleInputFile">Credito- Parcelas </label><input type='text' name='txtParcelas' placeholder="Parcelas." required onKeyPress = "teclaSomenteNumero()" required value="<?php
+		        if(isset($dadosCampos[9]))
+	        	{
+	        		echo $dadosCampos[9];
+	        	}
+	        	else
+	        	{
+	        		echo "";
+	        	}
+	            ?>"
+	        >
+	    </div>    
+
+		     <label for="exampleInputFile">Origem do Produto vendido </label>
+		     <input type='text' name='txtDestProdutoComprado'placeholder="Qual setor ultilizava o produto?" value="<?php
+		        	if(isset($dadosCampos[10]))
+	        		{
+	        			echo $dadosCampos[10];
+	        		}
+	        		else
+	        		{
+	        			echo "";
+	        		}
+	             	?>">
+	             	<br>
+	        	
+        <br>
+        <br>
+        <button name='crudLancVenda' class="btn btn-primary" value ="1" id="btn-salvar">
+        	Salvar
+        </button>
+        <button name='crudLancVenda' class="btn btn-success" value="2" id="btn-pesquisar">
+        	Pesquisar
+    	</button>
+        <button name='crudLancVenda' class="btn btn-info" value="3" id="btn-alterar">
+        	Alterar
+        </button>
+        <button name='crudLancVenda' class="btn btn-danger" value="4" id="btn-excluir">
+        	Excluir
+        </button>      
+    </form>
+  </div>	  	
 </body>
 </html>
 <?php

@@ -1,3 +1,8 @@
+
+Insert no banco dentro codigo
+$return = $query->InsereNoBanco("INSERT INTO bdcarteiraweb.tb_vendas (usuario,codigo, produto, quantidade, preco_unitario, total,descricao, tipo_pagamento, parcelas, dest_prod_vendido) VALUES ('".$_SESSION["usuario"]."','".$getSet->GetLancVendasCodigo()."','".$getSet->GetLancVendasProduto()."','".$getSet->GetLancVendasQuantidade()."','".$getSet->GetLancVendasPrecoUnitario()."','".$getSet->GetLancVendasTotal()."','".$getSet->GetLancVendasAreaDescricao()."','".$getSet->GetLancVendasRadioPagamento()."', '".$getSet->GetLancVendasParcelas()."','".$getSet->GetLancVendasDestProdutoComprado()."')");
+
+......................................................................................................................
 CREATE DATABASE bdcarteiraweb;
 CREATE TABLE `bdcarteiraweb`.`tb_usuarios` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
@@ -11,3 +16,38 @@ CREATE TABLE `bdcarteiraweb`.`tb_usuarios` (
 .......................................................................................................................
 
 INSERT INTO `bdcarteiraweb`.`tb_usuarios` (`nome`, `email`, `senha`, `perg_secreta`, `resp_perg_secreta`) VALUES ('thiago', 'thiagomilton.f@gmail.com', '30081996', 'Qual nome do seu cachorro?', 'toto');
+
+.......................................................................................................................
+
+CREATE TABLE `bdcarteiraweb`.`tb_compra` (
+  `id_compra` INT NOT NULL AUTO_INCREMENT,
+  `usuario` VARCHAR(100) NOT NULL,
+  `codigo` INT NOT NULL,
+  `produto` VARCHAR(100) NOT NULL,
+  `quantidade` INT NOT NULL,
+  `preco_unitario` DOUBLE NOT NULL,
+  `total` DOUBLE NOT NULL,
+  `descricao` VARCHAR(254) NOT NULL,
+  `tipo_pagamento` VARCHAR(20) NOT NULL,
+  `parcelas` INT,
+  `dest_prod_comprado` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id_compra`));
+
+.......................................................................................................................
+
+
+CREATE TABLE `bdcarteiraweb`.`tb_vendas` (
+  `id_venda` INT NOT NULL AUTO_INCREMENT,
+  `usuario` VARCHAR(100) NOT NULL,
+  `codigo` INT NOT NULL,
+  `produto` VARCHAR(100) NOT NULL,
+  `quantidade` INT NOT NULL,
+  `preco_unitario` DOUBLE NOT NULL,
+  `total` DOUBLE NOT NULL,
+  `descricao` VARCHAR(254) NOT NULL,
+  `tipo_pagamento` VARCHAR(20) NOT NULL,
+  `parcelas` INT,
+  `dest_prod_vendido` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id_venda`));
+
+.......................................................................................................................

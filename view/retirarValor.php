@@ -15,11 +15,13 @@
 <html>
 <head>
 	<?php include "cabecalho.html" ?>
+	<link rel="stylesheet" type="text/css" href="CSS/retirarValor.css">
 </head>
 <body>
 
-	<br><h1 id="sublinhar">Retirar Valor(Protótipo).</h1>
-	<form action='#' method='get'>
+	<br><h1 id="sublinhar" align="center">Retirar Valor(Protótipo).</h1>
+	<div class="CentralizarCorpo">
+		<form action='#' method='get'>
 	  
 	        		
 	        		Saldo:  <input type='text' name='txtRetirarValorSaldo' placeholder="Saldo Atual." required onKeyPress = "teclaSomenteNumero()"><br><br>
@@ -38,8 +40,8 @@
 	        
 	        	<button name='retirarValor' value="2" id="btn-calcular">Calcular</button>
 
-</form>
-
+		</form>
+	</div>	
 </body>
 </html>
 <?php

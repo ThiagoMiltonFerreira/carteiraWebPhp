@@ -16,10 +16,12 @@
 <html>
 <head>
 	<?php include "cabecalho.html" ?>
+	<link rel="stylesheet" type="text/css" href="CSS/lancCompra.css">
 </head>
 <body>
  	
-        	<br><h1 id="sublinhar">Lancamento de Compras.</h1>
+    <br><h1 id="sublinhar" align="center">Lancamento de Compras.</h1>
+        <div class="CentralizarCorpo">
         	<form action="../controller/lancVendas.php" method='post'>
         	    <!-- 1 Salvar |   2 Pesquisar | 3 Alterar | 4 Excluir :  <input type='text' name='txtLancVendasOpc' placeholder="0"><br><br>-->
         		Qual campo deseja alterar  colocar? <!--  <input type='text' name='qualCampoAlterar' value="10" placeholder="0">-->
@@ -34,7 +36,6 @@
 					  
 				</select>		
         		<br><br>
-        		
         		Codigo:  <input type='text' name='txtLancVendasCodigo' placeholder="Codigo do produto." onKeyPress = "teclaSomenteNumero()">
 	        	1 - Produto:  <input type='text' name='txtLancVendasProduto'placeholder="Nome do produto." >
 	        	2 - Quantidade:  <input type='text' name='txtLancVendasQuantidade'placeholder="Quantidade de produto disponivel." onKeyPress = "teclaSomenteNumero()" >
@@ -56,13 +57,12 @@
 	      
 	        	
         	<br><br><button name='crudLancVenda' value ="1" id="btn-salvar">Salvar</button>
-        
         	<button name='crudLancVenda' value="2" id="btn-pesquisar">Pesquisar</button>
         	<button name='crudLancVenda' value="3" id="btn-alterar">Alterar</button>
         	<button name='crudLancVenda' value="4" id="btn-excluir">Excluir</button>
         
         	</form>
-        	
+        </div>	
 
 </body>
 </html>
