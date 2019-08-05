@@ -16,10 +16,12 @@
 <html>
 <head>
 	<?php include "cabecalho.html" ?>
+	<link rel="stylesheet" type="text/css" href="CSS/lancCompra.css">
 </head>
 <body>
  	
-        	<br><h1 id="sublinhar">Lancamento de Compras.</h1>
+    <br><h1 id="sublinhar" align="center">Lancamento de Compras.</h1>
+        <div class="CentralizarCorpo">
         	<form action="../controller/lancVendas.php" method='post'>
         	    <!-- 1 Salvar |   2 Pesquisar | 3 Alterar | 4 Excluir :  <input type='text' name='txtLancVendasOpc' placeholder="0"><br><br>-->
         		Qual campo deseja alterar  colocar? <!--  <input type='text' name='qualCampoAlterar' value="10" placeholder="0">-->
@@ -60,7 +62,7 @@
         	<button name='crudLancVenda' value="4" id="btn-excluir">Excluir</button>
         
         	</form>
-        	
+        </div>	
 
 </body>
 </html>

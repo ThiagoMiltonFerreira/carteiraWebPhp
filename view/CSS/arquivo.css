@@ -1,5 +1,8 @@
 @charset "ISO-8859-1";
-
+.titulo
+{
+  font-family:Consolas, Negrito, sans-serif;
+}
 .container
 {
   width: 100vw;
@@ -21,7 +24,7 @@
   text-align: center;
   width: 400px;
   height: 300px;
-  background: #9EF4C9;
+  background: #B0E0E6;
   border-radius: 25px;
 
 }

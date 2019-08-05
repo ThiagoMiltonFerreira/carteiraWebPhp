@@ -15,13 +15,14 @@
 <html>
 <head>
 	<?php include "cabecalho.html" ?>
+	<link rel="stylesheet" type="text/css" href="CSS/adicionarValor.css">
 
 </head>
 <body>
 
-	<br><h1 id="sublinhar">Adicionar Valor(Protótipo).</h1>
-	<form action='#' method='get'>
-	  
+	<br><h1 id="sublinhar" align="center">Adicionar Valor(Protótipo).</h1>
+		<div class="CentralizarCorpo">	
+			<form action='#' method='get'>
 	        		
 	        		Saldo:  <input type='text' name='txtRetirarValorSaldo' placeholder="Saldo Atual." required onKeyPress = "teclaSomenteNumero()"><br><br>
 		        	Adiciona:  <input type='text' name='txtRetirarValorRetirada'placeholder="Valor adicionar." required onKeyPress = "teclaSomenteNumero()"><br><br>
@@ -37,9 +38,9 @@
 				
 				<button name='retirarValor' value ="1" id="btn-salvar">Salvar</button>
 	        
-	        	<button name='retirarValor' value="2" id="btn-calcular">Calcular</button>
-
-</form>
+	        	<button name='retirarValor' value="2" id="btn-calcular">Calcular</button>	    
+			</form>
+		</div>	
 </body>
 </html>
 <?php
