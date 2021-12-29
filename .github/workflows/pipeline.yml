@@ -8,8 +8,12 @@ on: [push]
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
-- name: deploy into heroku
+
+      - uses: actions/checkouw@v2
+      - name: deploy into heroku
+        uses: actions/setup-php@v2
+        with:
+             php-version: 7
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
