@@ -16,7 +16,7 @@ jobs:
           python-version: 7
 
   deploy:
-    needs: tests
+  
     runs-on: ubuntu-20.04
 
     steps:
