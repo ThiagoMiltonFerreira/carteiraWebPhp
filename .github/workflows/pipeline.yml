@@ -2,7 +2,7 @@ name: CI - Lint / Tests / Deploy
 
 on: [push]
 
-jobs:
+
         deploy:
     needs: tests
     runs-on: ubuntu-20.04
