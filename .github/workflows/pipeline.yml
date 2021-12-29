@@ -2,20 +2,8 @@ name: CI - Lint / Tests / Deploy
 
 on: [push]
 
-
-        deploy:
-    needs: tests
-    runs-on: ubuntu-20.04
-
-    steps:
-
-      - uses: actions/checkouw@v2
-      - name: deploy into heroku
-        uses: actions/setup-php@v2
-        with:
-             php-version: 7
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: ${{secrets.HEROKU_USER_EMAIL}}
+jobs:
+        Explore-gitHub-Actions:
+                runs-on: ubuntu-latest
+                steps:
+                        -run: echo"passou"
